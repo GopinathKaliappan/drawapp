@@ -1,17 +1,86 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
-</ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-menu [content]="mycontent">
+  <ion-content>
+    <ion-list>
+        <div *ngFor="let color of brushColors"  (click)="changePenColor(color)">            
+            <ion-icon 
+              ios="ios-brush" 
+              md="md-brush"               
+              [style.color]="color"
+            >
+              
+            </ion-icon>
+        </div>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav #mycontent [root]="rootPage" ></ion-nav>
+
+<ion-content>
+    
+      <div class="canvas-container">
+        <canvas id="canvas" ></canvas>
+      </div>
+      <div class="range-container">
+        <ion-range 
+          [(ngModel)]="brushValue" 
+          color="primary" 
+          pin="true"
+          (ionChange)="changePenSize()"
+        >
+          
+        </ion-range>
+      </div>      
+      
+     <!--  <div class="brush-container">
+        <div *ngFor="let size of brushSizes"  (click)="changePenSize(size)">    
+          <span>        
+            <ion-icon 
+              ios="ios-brush" 
+              md="md-brush"               
+              
+            >
+              
+            </ion-icon>
+          </span>
+        </div>
+      </div> -->
+      
+      <ion-item>
+          <button ion-button (click)="toggleDrawing(true)">
+              Enable Drawing
+          </button>
+          <button ion-button (click)="toggleDrawing(false)">
+              Disable Drawing
+          </button>          
+     </ion-item> 
+     <ion-item>
+          <button ion-button (click)="undoCanvas()">
+              Undo
+          </button>
+          <button ion-button (click)="redoCanvas()">
+              Redo
+          </button>       
+          <button ion-button (click)="clearCanvas()">
+              Clear
+          </button>          
+     </ion-item> 
+     <div class="color-container">
+      <ion-scroll scrollX="true" scrollY="true">
+
+          <div class="color-items">
+              <i *ngFor="let color of brushColors"  (click)="changePenColor(color)">            
+                  <ion-icon 
+                    ios="ios-brush" 
+                    md="md-brush"               
+                    [style.color]="color"
+                    class="brush-icon"
+                  >
+                    
+                  </ion-icon>
+              </i>
+            </div>
+            </ion-scroll>
+  </div>    
 </ion-content>
