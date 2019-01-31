@@ -7,10 +7,10 @@ page-home {
 
 .brush-container {
 
-
+    font-size: 30px;
 }
 .range-container {
-	width: 80%;
+	width: 100%;
 }
 
 .color-container {
@@ -28,4 +28,73 @@ page-home {
 .color-items {
 	display: table;
     margin: 0px auto;
+    min-width: max-content;
+    overflow: scroll;
+
+}
+
+
+.range-md.range-has-pin {
+    padding-top: 0px; 
+    padding-bottom: 18px;
+    margin-top: -10px;
+ }
+
+.range-md .range-slider {
+    height: 16px;
+}
+.brush-icon-holder {
+	display: inline-block;
+    margin-bottom: 5px;
+}
+
+.main-header {
+	overflow: scroll;
+}
+
+.paint-top {
+
+}
+.header-ios .toolbar-ios:last-child .toolbar-background-ios {
+    border-width: 0 0 0.55px;
+    background-color: #00000070;
+}
+
+// .new-canvas {
+//  cursor: url(https://i.stack.imgur.com/fp7eL.png) 4 64, auto;
+//  background:#ddd;
+//}
+//.canvas-container:hover {
+//  cursor: url(https://i.stack.imgur.com/fp7eL.png) 4 64, auto;
+ // background:#ddd;
+//}
+
+//body:hover {
+//  cursor: url(https://i.stack.imgur.com/fp7eL.png) 4 64, auto;
+//  background:#ddd;   
+//}
+
+.text-center {
+    text-align: center;
+    font-size: 10px;
+}
+
+
+.custom-brush-container {
+    margin-left: 5px;
+    font-size: 20px;
+    width: 48px;
+    text-align: center;
+    margin-right: 5px;
+}
+
+.selected-brush {
+    // background-color: black !important;
+    border-bottom-right-radius: 60px;
+    width: 40px;
+    border: 1px solid black !important;
+    border-top-left-radius: 60px; 
+}
+.tabbar {
+    display:none;
 }

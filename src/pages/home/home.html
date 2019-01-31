@@ -1,4 +1,40 @@
+<ion-header>
+<ion-navbar hide-tabs class="paint-top">
+          <div class="main-header">
+          <div class="color-items ">
+              <div 
+                class="brush-icon-holder" 
+                *ngFor="let color of brushColors"  
+                (click)="changePenColor(color)"
+                [ngClass]="{'custom-brush-container': canvas.freeDrawingBrush.color === color }"  
+              >            
+                  <ion-icon 
+                    ios="ios-brush" 
+                    md="md-brush"               
+                    [style.color]="color"
+                    [style.font-size]="'30px'"
+                    
+                    [ngClass]="{'selected-brush' : canvas.freeDrawingBrush.color === color }"
+                    
+                  >
+                  </ion-icon>
 
+              </div>             
+            </div>
+          </div>
+             <div class="range-container text-center" >
+              <ion-range 
+                [(ngModel)]="brushValue" 
+                color="primary" 
+                pin="true"
+
+                (ionChange)="changePenSize()"
+              >
+                
+              </ion-range> <span>{{hintText}}</span>
+            </div>    
+  </ion-navbar>
+  </ion-header>
 <ion-menu [content]="mycontent">
   <ion-content>
     <ion-list>
@@ -21,16 +57,6 @@
     
       <div class="canvas-container">
         <canvas id="canvas" ></canvas>
-      </div>
-      <div class="range-container">
-        <ion-range 
-          [(ngModel)]="brushValue" 
-          color="primary" 
-          pin="true"
-          (ionChange)="changePenSize()"
-        >
-          
-        </ion-range>
       </div>      
       
      <!--  <div class="brush-container">
@@ -47,40 +73,44 @@
         </div>
       </div> -->
       
-      <ion-item>
+     <ion-item>
+          <button ion-button (click)="pickImage()">
+              Pick Image
+          </button>
           <button ion-button (click)="toggleDrawing(true)">
-              Enable Drawing
+              Draw
           </button>
           <button ion-button (click)="toggleDrawing(false)">
-              Disable Drawing
-          </button>          
-     </ion-item> 
-     <ion-item>
+              Arrange
+          </button>
           <button ion-button (click)="undoCanvas()">
               Undo
           </button>
-          <button ion-button (click)="redoCanvas()">
-              Redo
+ 
+                    
+     </ion-item> 
+     <ion-item>
+               <button ion-button (click)="toggleEraser()">
+              Erase
           </button>       
           <button ion-button (click)="clearCanvas()">
-              Clear
-          </button>          
-     </ion-item> 
-     <div class="color-container">
-      <ion-scroll scrollX="true" scrollY="true">
+              Reset
+          </button>
 
-          <div class="color-items">
-              <i *ngFor="let color of brushColors"  (click)="changePenColor(color)">            
-                  <ion-icon 
-                    ios="ios-brush" 
-                    md="md-brush"               
-                    [style.color]="color"
-                    class="brush-icon"
-                  >
-                    
-                  </ion-icon>
-              </i>
-            </div>
-            </ion-scroll>
+        
+      </ion-item>
+     <div class="color-container">
+
   </div>    
+
 </ion-content>
+ 
+    <ion-segment [(ngModel)]="icons" color="secondary">
+      <ion-segment-button value="camera">
+        <ion-icon name="camera"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="bookmark">
+        <ion-icon name="bookmark"></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+ 
